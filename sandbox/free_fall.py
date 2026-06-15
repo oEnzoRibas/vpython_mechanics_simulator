@@ -1,5 +1,6 @@
 from vpython import *
 import numpy as np
+import csv
 
 def main():
     #canvas(
@@ -23,25 +24,33 @@ def main():
 
     dt = np.float64(0.01)
     v = np.float64(0)
-    g = np.float64(909.78)
+    g = np.float64(-10)
+
+    t =0
+    xi = 0
 
 
-    while True:
-        rate(60)
+    with open("saida.csv", "w", encoding="utf-8",) as file:
+        writer = csv.writer(file)
+        writer.writerow(["tempo_dt", "posicao_y", "xi", "velocidade_v", "aceleracao"])
 
-        v += -g * dt
-        ball.pos.y += v * dt
+        while True:
+            rate(60)
+            t += dt - 0.01
 
-        ball_edge = ball.pos.y - ball.radius
-        floor_top_surface = floor.pos.y + floor.size.y/2
+            file.write(f"{t}, {ball.pos.y}, {xi}, {v}, {g}\n")
 
-        if ball_edge <= floor_top_surface:
-            #penetration = floor_top_surface - ball_edge
-            #ball.pos.y = floor_top_surface + ball.radius + penetration
-            
-            ball.pos.y = floor_top_surface + ball.radius
-            v = -v
+            v = v + g * dt
+            ball.pos.y = ball.pos.y + v * dt + 0.5*g*dt**2
 
+            xi = ball.pos.y + v*dt
+
+            ball_edge = ball.pos.y - ball.radius
+            floor_top_surface = floor.pos.y + floor.size.y/2
+
+            if ball_edge <= floor_top_surface:
+                ball.pos.y = floor_top_surface + ball.radius
+                v = -v
 
 if __name__ == "__main__":
     main()
