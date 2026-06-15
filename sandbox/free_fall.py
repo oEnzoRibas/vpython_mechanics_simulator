@@ -2,11 +2,11 @@ from vpython import *
 import numpy as np
 
 def main():
-    canvas(
-        title="Free Fall",
-        width=1920,
-        height=1080
-    )
+    #canvas(
+    #    title="Free Fall",
+    #    width=1920,
+    #    height=1080
+    #)
 
     ball = sphere(
         pos=vector(0,10,0),
@@ -36,8 +36,10 @@ def main():
         floor_top_surface = floor.pos.y + floor.size.y/2
 
         if ball_edge <= floor_top_surface:
-            penetration = floor_top_surface - ball_edge
-            ball.pos.y = floor_top_surface + ball.radius + penetration
+            #penetration = floor_top_surface - ball_edge
+            #ball.pos.y = floor_top_surface + ball.radius + penetration
+            
+            ball.pos.y = floor_top_surface + ball.radius
             v = -v
 
 
