@@ -26,17 +26,17 @@ def main():
     v = np.float64(0)
     g = np.float64(-10)
 
-    t =0
+    t = -dt
     xi = 0
 
 
-    with open("saida.csv", "w", encoding="utf-8",) as file:
+    with open("sandbox/saida.csv", "w", encoding="utf-8",) as file:
         writer = csv.writer(file)
         writer.writerow(["tempo_dt", "posicao_y", "xi", "velocidade_v", "aceleracao"])
 
         while True:
-            rate(60)
-            t += dt - 0.01
+            rate(120)
+            t += dt
 
             file.write(f"{t}, {ball.pos.y}, {xi}, {v}, {g}\n")
 
