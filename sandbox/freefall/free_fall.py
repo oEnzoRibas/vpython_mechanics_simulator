@@ -40,8 +40,8 @@ def main():
 
             file.write(f"{t}, {ball.pos.y}, {xi}, {v}, {g}\n")
 
-            v = v + g * dt
             ball.pos.y = ball.pos.y + v * dt + 0.5*g*dt**2
+            v = v + g * dt
 
             xi = ball.pos.y + v*dt
 
