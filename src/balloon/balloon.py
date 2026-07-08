@@ -91,7 +91,7 @@ ground = box(
 # ])
 
 balloon = sphere(
-    pos=vec(0, 0, 3), 
+    pos=vec(3, 0, 3), 
     size=vec(2, 2, 2),
     color=color.green
 )
@@ -118,18 +118,18 @@ g_pos = graph(
     ymax=20
 )
 
-# g_pos_rel = graph(
-#     align="right",
-#     title="Relative Movement",
-#     xtitle="Time (s)",
-#     ytitle="Position",
-#     width=600,
-#     height=250,
-#     xmin=0,
-#     xmax=10,
-#     ymin=0,
-#     ymax=20
-# )
+g_pos_rel = graph(
+    align="right",
+    title="Relative Movement",
+    xtitle="Time (s)",
+    ytitle="Position",
+    width=600,
+    height=250,
+    xmin=0,
+    xmax=10,
+    ymin=0,
+    ymax=20
+)
 
 # g_vel = graph(
 #     align="right",
@@ -146,7 +146,7 @@ g_pos = graph(
 
 balloon_graph = gcurve(graph=g_pos, color=color.green)
 celular_graph = gcurve(graph=g_pos, color=color.red)
-# cell_balloon = gcurve(graph=g_pos_rel, color= color.orange)
+cell_balloon = gcurve(graph=g_pos_rel, color= color.orange)
 
 v0 = 4
 v = v0
@@ -166,7 +166,7 @@ while True:
 
     celular_graph.plot(t, celular.pos.y)
     balloon_graph.plot(t, balloon.pos.y)
-    # cell_balloon.plot(t, balloon.pos.y-celular.pos.y)
+    cell_balloon.plot(t, balloon.pos.y-celular.pos.y)
 
 
 
