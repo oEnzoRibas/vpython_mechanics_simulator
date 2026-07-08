@@ -158,15 +158,15 @@ while True:
     if celular.pos.y <= -10:
         continue
     celular.pos.y = v0 * t + 0.5*g*t**2
-# v = v + g * dt
+    v = v + g * dt
 
     balloon.pos.y = v0*t
 
 
 
-    celular_graph.plot(t, celular.pos.y)
-    balloon_graph.plot(t, balloon.pos.y)
-    cell_balloon.plot(t, balloon.pos.y-celular.pos.y)
+    celular_graph.plot(t, v)
+    balloon_graph.plot(t, v0)
+    cell_balloon.plot(t, v0-v)
 
 
 
